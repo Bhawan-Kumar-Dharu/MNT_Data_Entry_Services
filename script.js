@@ -40,9 +40,9 @@ mode.addEventListener("click", e => {
     }
 
     localStorage.setItem("href", theme_css.href)
+    let theme_href = localStorage.getItem("href");
 })
 
-let theme_href = localStorage.getItem("href");
 theme.href = theme_href;
 
 
