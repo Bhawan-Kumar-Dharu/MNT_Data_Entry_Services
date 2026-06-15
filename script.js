@@ -30,20 +30,28 @@ sections.forEach((section) => {
 });
 
 // THEME MODE
-mode.addEventListener("click", e => {
-    let theme_css = document.getElementById("theme")
-    if (theme_css.href.includes("darkstyles.css")) {
-        theme_css.href = 'css/brightstyles.css';
-    } else {
+const mode = document.getElementById("mode");
+const theme = document.getElementById("theme");
 
-        theme_css.href = 'css/darkstyles.css';
+// 🔥 Apply saved theme on page load
+let savedTheme = localStorage.getItem("theme");
+
+if (savedTheme) {
+    theme.href = savedTheme;
+} else {
+    theme.href = "css/darkstyles.css";
+}
+
+// 🔥 Toggle theme on click
+mode.addEventListener("click", () => {
+    if (theme.href.includes("darkstyles.css")) {
+        theme.href = "css/brightstyles.css";
+    } else {
+        theme.href = "css/darkstyles.css";
     }
 
-    localStorage.setItem("href", theme_css.href)
-    let theme_href = localStorage.getItem("href");
-})
-
-theme.href = theme_href;
+    localStorage.setItem("theme", theme.href);
+});
 
 
 // CARD  BUTTON SETTINGS 
